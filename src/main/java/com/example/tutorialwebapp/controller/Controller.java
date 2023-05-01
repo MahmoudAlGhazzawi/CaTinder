@@ -1,7 +1,7 @@
 package com.example.tutorialwebapp.controller;
 
 import com.example.tutorialwebapp.loginDB.User;
-import com.example.tutorialwebapp.loginDB.UserService;
+import com.example.tutorialwebapp.serviceForBoth.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

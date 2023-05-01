@@ -1,7 +1,10 @@
 package com.example.tutorialwebapp.config;
 
+import com.example.tutorialwebapp.loginDB.DBLoginSuccessHandler;
 import com.example.tutorialwebapp.loginDB.UserDetailsServiceImpl;
 import com.example.tutorialwebapp.oAuth2.CustomerOAuth2UserService;
+import com.example.tutorialwebapp.oAuth2.OAuth2LoginSuccessHandler;
+import com.example.tutorialwebapp.serviceForBoth.PasswordEncoder;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,19 +28,6 @@ import java.io.IOException;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-    @Autowired
-    private CustomerOAuth2UserService oAuth2UserService;
-
-    @Bean
-    UserDetailsService getUserDetailsService(){
-        return new UserDetailsServiceImpl();
-    }
-
-    @Bean
-    public BCryptPasswordEncoder getPasswordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
     @Bean
     public AuthenticationManager authManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
@@ -47,10 +37,10 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public DaoAuthenticationProvider getDaoAuthProvider(){
+    public DaoAuthenticationProvider getDaoAuthProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(getUserDetailsService());
-        daoAuthenticationProvider.setPasswordEncoder(getPasswordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder.getPasswordEncoder());
         return daoAuthenticationProvider;
     }
 
@@ -59,21 +49,21 @@ public class WebSecurityConfig {
 
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/home", "/images/**", "/register", "/createUser").permitAll()
+                        .requestMatchers("/", "/home", "/images/**", "/register", "/createUser","/oauth/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin()
                         .loginPage("/login")
                         .usernameParameter("email")
-                        .successHandler(authenticationSuccessHandler())
+                        .successHandler(dbLoginSuccessHandler)
                         .permitAll()
                 .and()
                 .oauth2Login()
                     .loginPage("/login")
-                    .successHandler(authenticationSuccessHandler())
                     .userInfoEndpoint()
                     .userService(oAuth2UserService)
                 .and()
+                .successHandler(oAuth2LoginSuccessHandler)
                 .and()
                 .logout()
                 .permitAll();
@@ -81,18 +71,16 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-
-    @Bean
-    public AuthenticationSuccessHandler authenticationSuccessHandler() {
-        return new CustomAuthenticationSuccessHandler();
-    }
-
-    private class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-
-        @Override
-        public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-            response.sendRedirect("/hello");
-        }
-    }
+    //Wenn man sich erfolgreich angemeldet hat :)
+    @Autowired
+    private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
+    @Autowired
+    private DBLoginSuccessHandler dbLoginSuccessHandler;
+    @Autowired
+    private CustomerOAuth2UserService oAuth2UserService;
+    @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 }

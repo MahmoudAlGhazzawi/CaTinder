@@ -50,4 +50,12 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getFullName() {
+        return user.getName();
+    }
+
+    public String getClientName(){
+        return "Lokal";
+    }
 }

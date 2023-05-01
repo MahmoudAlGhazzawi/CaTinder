@@ -1,5 +1,6 @@
-package com.example.tutorialwebapp.loginDB;
+package com.example.tutorialwebapp.repository;
 
+import com.example.tutorialwebapp.loginDB.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
