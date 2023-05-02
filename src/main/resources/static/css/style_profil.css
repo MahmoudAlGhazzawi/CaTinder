@@ -50,6 +50,7 @@ header {
 
 .navigation a {
     position: relative;
+    right: 170px;
     font-size: 1.1em;
     /*color: #fff;*/
     /* color: #DFA67B; */
@@ -78,6 +79,12 @@ header {
 .navigation a:hover::after {
     transform-origin: left;
     transform: scaleX(1);
+}
+
+.navigation form{
+    position: absolute;
+    right: 50px;
+    top: 30px;
 }
 
 .navigation .btnLogout {

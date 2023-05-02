@@ -10,12 +10,15 @@
 
 section {
     position: relative;
+    top: 0;
+    left: 0;
+
     width: 100%;
     min-height: 100vh;
     padding: 100px;
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
     background-color: #F5E8C7;
     transition: 0.5s;
 }
@@ -43,7 +46,7 @@ header {
     width: 100%;
     padding: 20px 51px;
     background: #F5E8C7;
-/*    background: red; */
+    /*    background: red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,7 +60,7 @@ header {
     height: 100%;
     /* align-self: center;
     object-fit: cover; */
-  }
+}
 
 
 /* .logo {
@@ -104,8 +107,8 @@ header {
     width: 130px;
     height: 50px;
     background: transparent;
-   /* border: 2px solid #fff;*/
-   /* border: 2px solid #9E6F21; */
+    /* border: 2px solid #fff;*/
+    /* border: 2px solid #9E6F21; */
     border: 2px solid #162938;
     outline: none;
     border-radius: 6px;
@@ -314,7 +317,7 @@ header {
     margin-top: 10px;
 }
 
-.button_text, 
+.button_text,
 .button_icon {
     display: inline-flex;
     align-items: center;
@@ -376,44 +379,43 @@ header {
 /*  */
 
 .content_left {
-    position: inherit;
-    width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .content_left .textBox {
-    position: fixed;
-    top: 15%;
+    position: relative;
     max-width: 600px;
 }
 
-.content_left .textBox h2 {
+.content_left .textBox h2{
+    font-size: 4em;
+    position: relative;
+    left: 0;
+    top: 30px;
+    width: 600px;
+}
+
+.content_left .textBox h2#welcome{
     color: #162938;
     font-size: 4em;
     line-height: 1.5em;
     font-weight: 900;
-    /* text-transform: uppercase; */
+    position: absolute;
+    left: 0;
+    top: 57px;
 }
 
-.content_left .textBox h2 span {
-    font-size: 2em;
-}
-
-.content_left .textBox h2 span#img_text {
-    position: fixed;
-    left: 25.5%;
-    top: 6.8%;
-    
-    padding-right: 50px;
-    margin-top: 50px;
-    padding-left: 50px;
-    justify-content: flex-end;
-}
-
-.content_left .textBox h2 span#img_text img{
+.content_left .textBox span#img_text img{
     max-width: 350px;
+    position: absolute;
+    left: 410px;
+    top: -27px;
 }
 
 .content_left .textBox h2#links_ueberschrift {
@@ -421,20 +423,26 @@ header {
     font-size: 2em;
     line-height: 1.5em;
     font-weight: 900;
+
+    position: absolute;
+    top: 185px;
+    left: 0;
 }
 
 .content_left .textBox p {
     color: #162938;
+    width: 600px;
+    position: absolute;
+    top: 235px;
+    left: 0;
 }
 
 .content_left .textBox span#hp_img1 img{
-    position: fixed;
-    top: 46%;
-    left: 6.4%;
-    width: 620px;
+    position: absolute;
+    top: 335px;
+    left: 0;
+    width: 600px;
     height: 350px;
-    max-width: 100%;
-    max-height: 100%;
     border-radius: 6px;
     object-fit: cover;
 }
@@ -447,17 +455,20 @@ header {
 
 
 .content_right {
-    position: inherit;
-    width: 100%;
+    position: relative;
+    right: 0;
+    top: 120px;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .content_right .textBox {
-    position: fixed;
-    bottom: 18%;
-    right: 5%;
+    position: relative;
+    right: 0;
+    left: 1050px;
+    top: 0;
     max-width: 600px;
 }
 
@@ -466,10 +477,19 @@ header {
     font-size: 2em;
     line-height: 1.5em;
     font-weight: 900;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 400px;
+    width: 600px;
 }
 
 .content_right .textBox p {
     color: #162938;
+    width: 600px;
+    position: absolute;
+    top: 450px;
+    left: 0;
 }
 
 .content_right .textBox a#btn_swipe {
@@ -483,16 +503,19 @@ header {
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
+    width: 128px;
+    position: absolute;
+    top: 540px;
+    left: 0;
 }
 
 .content_right .textBox span#hp_img2 img{
-    position: fixed;
-    top: 20%;
-    right: 5%;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    left: 0;
     width: 600px;
     height: 350px;
-    max-width: 100%;
-    max-height: 100%;
     border-radius: 6px;
     object-fit: cover;
 }

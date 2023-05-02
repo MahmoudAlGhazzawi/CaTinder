@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Website With Login & Registration | Team Yellow</title>
+    <title>CaTinder</title>
     <link rel="stylesheet" href="" th:href="@{/css/style_welcomePage.css}">
 </head>
 
@@ -15,7 +15,7 @@
             <header>
 
                 <div class="home-container">
-                    <a th:href="@{/welcome_page}">
+                    <a th:href="@{/homePage}">
                         <img th:src="@{/images/logo_nobackground.png}" alt="image" class="home-image"/>
                     </a>
                 </div>
@@ -32,7 +32,7 @@
 
         <div class="content_left">
             <div class="textBox">
-                <h2>Welcome to
+                <h2 id="welcome">Welcome to
                         <span class="img_beside_text" id="img_text">
                              <img th:src="@{/images/Logo_noBackground.png}" class="img_catinder"/>
                         </span>
@@ -62,7 +62,7 @@
                     Das ist ein Test. Das ist ein Test. Das ist ein Test. 
                     Das ist ein Test.
                 </p>
-                <a href="swipe.html" id="btn_swipe">Try Swipe</a>
+                <a th:href="@{/swipe}" id="btn_swipe">Try Swipe</a>
             </div>
         </div>
 

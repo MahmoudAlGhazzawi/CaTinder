@@ -14,7 +14,7 @@
     <header>
 
         <div class="home-container">
-            <a th:href="@{/welcome_page}">
+            <a th:href="@{/homePage}">
                 <img th:src="@{/images/logo_nobackground.png}" alt="image" class="home-image"/>
             </a>
           </div>
@@ -24,7 +24,9 @@
             <a href="#">Meine Kontakte</a>
             <a th:href="@{/profil}">Mein Profil</a>
             <!-- <a href="#">Einstellungen</a> -->
-            <button class="btnLogout">Logout</button>
+            <form th:action="@{/logout}" method="post">
+                <button class="btnLogout">Logout</button>
+            </form>
         </nav>
     </header>
 
