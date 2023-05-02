@@ -48,6 +48,6 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
             }
         }
 
-        response.sendRedirect("/hello");
+        response.sendRedirect("/homePage");
     }
 }

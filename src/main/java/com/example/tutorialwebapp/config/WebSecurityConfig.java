@@ -21,12 +21,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.io.IOException;
 
 @Configuration
+@RestController
 @EnableWebSecurity
-public class WebSecurityConfig {
+public class WebSecurityConfig implements WebMvcConfigurer  {
+
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/welcome_page").setViewName("/welcome_page");
+        registry.addViewController("/").setViewName("/welcome_page");
+        registry.addViewController("/homePage").setViewName("/homePage");
+        registry.addViewController("/swipe").setViewName("/swipe");
+        registry.addViewController("/profil").setViewName("/profil");
+    }
 
     @Bean
     public AuthenticationManager authManager(HttpSecurity http) throws Exception {
@@ -49,11 +61,11 @@ public class WebSecurityConfig {
 
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/home", "/images/**", "/register", "/createUser","/oauth/**").permitAll()
+                        .requestMatchers("/","/welcome_page", "/images/**", "/css/**", "/js/**", "/createUser","/oauth/**", "/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin()
-                        .loginPage("/login")
+                        .loginPage("/welcome_page")
                         .usernameParameter("email")
                         .successHandler(dbLoginSuccessHandler)
                         .permitAll()

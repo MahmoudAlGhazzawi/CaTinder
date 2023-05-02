@@ -29,11 +29,7 @@ public class Controller {
             }
         }
 
-        return "redirect:/register";
+        return "redirect:/welcome_page";
     }
 
-    @GetMapping("/register")
-    public String register(){
-        return "register";
-    }
 }

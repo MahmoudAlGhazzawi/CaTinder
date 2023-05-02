@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Website With Login & Registration | Team Yellow</title>
+    <link rel="stylesheet" href="" th:href="@{/css/style_swipe.css}">
+</head>
+
+<body>
+    
+    <header>
+
+        <div class="home-container">
+            <a th:href="@{/welcome_page}">
+                <img th:src="@{/images/logo_nobackground.png}" alt="image" class="home-image"/>
+            </a>
+          </div>
+
+        <nav class="navigation">
+            <a th:href="@{/swipe}">Swipe</a>
+            <a href="#">Meine Kontakte</a>
+            <a th:href="@{/profil}">Mein Profil</a>
+            <!-- <a href="#">Einstellungen</a> -->
+            <button class="btnLogout">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile">
+            <h1>Katze Migi</h1>
+            <div class="profile-image">
+                <img th:src="@{/images/Migi01.jpg}"/>
+            </div>
+            <div class="profile-info">
+                <button class="swipe" id="btn_heart">&#x2764;</button>
+                <button class="swipe" id="btn_swipe">Swipe</button>
+            </div>
+            
+            
+        </section>
+    </main>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+<script src="" th:src="@{js/script.js}" ></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

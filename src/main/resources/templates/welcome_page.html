@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Website With Login & Registration | Team Yellow</title>
+    <link rel="stylesheet" href="" th:href="@{/css/style_welcomePage.css}">
+</head>
+
+<body>
+    <div class="container" id="blur">
+        <section class="sec">
+            <header>
+
+                <div class="home-container">
+                    <a th:href="@{/welcome_page}">
+                        <img th:src="@{/images/logo_nobackground.png}" alt="image" class="home-image"/>
+                    </a>
+                </div>
+
+                <nav class="navigation">
+                    <a th:href="@{/swipe}">Swipe</a>
+                    <a href="#">Meine Kontakte</a>
+                    <a th:href="@{/profil}">Mein Profil</a>
+                    <!-- <a href="#">Einstellungen</a> -->
+                    <button class="btnLogin-popup">Login</button>
+                </nav>
+                
+            </header>
+
+        <div class="content_left">
+            <div class="textBox">
+                <h2>Welcome to
+                        <span class="img_beside_text" id="img_text">
+                             <img th:src="@{/images/Logo_noBackground.png}" class="img_catinder"/>
+                        </span>
+                </h2>
+                <br>
+                <h2 id="links_ueberschrift">Was können wir Ihnen anbieten</h2>
+                <br>
+                <p>Das ist ein Test. Das ist ein Test. Das ist ein Test. 
+                    Das ist ein Test. Das ist ein Test. Das ist ein Test. 
+                    Das ist ein Test. Das ist ein Test. Das ist ein Test. 
+                    Das ist ein Test.</p>
+                <span class="homepage_img1" id="hp_img1">
+                    <img th:src="@{/images/migi_homepage1.jpg}"/>
+                </span>
+            </div>
+        </div>
+
+        <div class="content_right">
+            <div class="textBox">
+                <span class="homepage_img2" id="hp_img2">
+                    <img th:src="@{/images/migi_homepage2.jpg}"/>
+                </span>
+                <h2 id="rechts_ueberschrift">So findest Du eine andere Katze</h2>
+                <br>
+                <p>Das ist ein Test. Das ist ein Test. Das ist ein Test. 
+                    Das ist ein Test. Das ist ein Test. Das ist ein Test. 
+                    Das ist ein Test. Das ist ein Test. Das ist ein Test. 
+                    Das ist ein Test.
+                </p>
+                <a href="swipe.html" id="btn_swipe">Try Swipe</a>
+            </div>
+        </div>
+
+    </div>
+        
+
+        <div class="wrapper">
+            <span class="icon-close">
+                <ion-icon name="close"></ion-icon>
+            </span>
+
+            <div class="form-box login">
+                <h2>Login</h2>
+                <form th:action="@{/welcome_page}" method="post">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="email"></ion-icon></span>
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="password"></ion-icon></span>
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+
+                    <button type="button" class="btn-google" onclick="location.href='/oauth2/authorization/google'">
+                        <span class="button_icon" >
+                            <ion-icon name="logo-google"></ion-icon>
+                        </span>
+                        <span class="button_text">Login with Google</span>
+                    </button>
+
+                    <div class="login-register">
+                        <p>Don't have an account? 
+                            <a href="#" class="register-link">Register</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>Registration</h2>
+                <form th:action="@{/createUser}" method="post">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="name"></ion-icon></span>
+                        <input type="text"  name="name" required>
+                        <label>Name</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="email"></ion-icon></span>
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="password"></ion-icon></span>
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">I agree to the terms & conditions</label>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="login-register">
+                        <p>Already have an account?
+                            <a href="#" class="login-link">Login</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+
+    <script src="" th:src="@{js/script.js}" ></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    </section>
+
+</body>
+
+</html>
