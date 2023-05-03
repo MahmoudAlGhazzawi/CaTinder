@@ -32,24 +32,27 @@
 
 
     <!-- <main> -->
-        <section class="profile">
-            <!-- <h1>Katze Migi</h1> -->
-            <div class="profile-name">
-                <h1>Katze Migi</h1>
+    <section class="profile">
+        <div class="profile-name">
+            <h1>Katze Migi</h1>
+        </div>
+        <div class="profile-image">
+            <img th:src="@{/images/Migi01.jpg}"/>
+        </div>
+        <div class="image-buttons">
+            <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" multiple>
+                <button class="upload-button" type="submit">Bild hochladen</button>
+            </form>
+            <button class="edit-button">Profil bearbeiten</button>
+        </div>
+        <section class="profile-box">
+            <div class="profile-info">
+                <p id="profil-info">Profilnformationen</p>
+                <p id="profil-beschreibung">Hier kommt die Verbindung zur Datenbank -> Beschreibung aufrufen</p>
             </div>
-            <div class="profile-image">
-                <img th:src="@{/images/Migi01.jpg}"/>
-            </div>
-            <div class="image-buttons">
-                <button class="edit-button">Profil bearbeiten</button>
-                <button class="upload-button">Bild hochladen</button>
-            </div>
-            <section class="profile-box">
-                <div class="profile-info">
-                    <p id="profil-info">Profilnformationen</p>
-                    <p id="profil-beschreibung">Hier kommt die Verbindung zur Datenbank -> Beschreibung aufrufen</p>
-                </div>
-            </section>
+        </section>
+
 
             <div class="image-gallery">
                 <div class="image-wrapper">
