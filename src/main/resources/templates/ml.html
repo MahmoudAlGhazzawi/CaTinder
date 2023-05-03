@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>Cat breed prediction</title>
+    </header>
+    <body onload="init()">
+        <input type="file" id="cat" accept=".jpg"/>
+        <img id="imagePreview">
+        <p id="resu"></p>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+        <script th:src="@{js/ml.js}"></script>
+    </body>
+</html>
