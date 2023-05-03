@@ -193,7 +193,11 @@ header {
     /* transform: translateX(-50%); */
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    width: auto;
+}
+
+.image-buttons input{
+    font-size: 1em;
 }
 
 .image-buttons button {
@@ -209,6 +213,7 @@ header {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     font-size: 1.3em;
+    margin-left: 20px;
 }
 
 .image-buttons button:hover {
@@ -243,7 +248,7 @@ header {
 .image-gallery {
     position: absolute;
     right: 30px;
-    top: 245px;
+    top: 240px;
 
     display: flex;
     flex-wrap: wrap;
