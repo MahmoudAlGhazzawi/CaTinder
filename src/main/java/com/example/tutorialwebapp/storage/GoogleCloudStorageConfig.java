@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 @Configuration
 public class GoogleCloudStorageConfig {
@@ -22,7 +23,8 @@ public class GoogleCloudStorageConfig {
 
     @Bean
     public Storage storage() throws IOException {
-        InputStream credentialsStream = new FileInputStream("D:/UNI/catinder-f029cf8f7ba5.json");
+        URL credentialsUrl = new URL("https://storage.googleapis.com/catinder_bucket/catinder-f029cf8f7ba5.json");
+        InputStream credentialsStream = credentialsUrl.openStream();
         GoogleCredentials credentials = GoogleCredentials.fromStream(credentialsStream);
         StorageOptions options = StorageOptions.newBuilder()
                 .setProjectId(projectId)

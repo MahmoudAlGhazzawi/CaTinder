@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Website With Login & Registration | Team Yellow</title>
+    <link rel="stylesheet" href="" th:href="@{/css/style_rasse.css}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="home-container">
+        <a th:href="@{/homePage}">
+            <img th:src="@{/images/logo_nobackground.png}" alt="image" class="home-image"/>
+        </a>
+    </div>
+
+    <nav class="navigation">
+        <a th:href="@{/katzenrassen}">Finde Rasse</a>
+        <a th:href="@{/swipe}">Swipe</a>
+        <a href="#">Meine Kontakte</a>
+        <a th:href="@{/profil}">Mein Profil</a>
+        <form th:action="@{/logout}" method="post">
+            <button class="btnLogout">Logout</button>
+        </form>
+    </nav>
+</header>
+
+<main>
+    <section class="profile">
+        <h1>Katze Migi</h1>
+        <div class="rasse-image">
+          <img th:src="@{/images/migi_homepage2.jpg}"/>
+        </div>
+        <div class="rasse-buttons">
+            <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" multiple>
+                <button class="rasse-button" id="btn_rasse" type="submit"> Bild hochladen</button>
+            </form>
+        </div>
+
+
+    </section>
+</main>
+
+<script src="" th:src="@{js/script.js}" ></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+</html>

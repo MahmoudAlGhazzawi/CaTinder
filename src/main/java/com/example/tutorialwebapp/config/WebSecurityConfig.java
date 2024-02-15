@@ -38,6 +38,8 @@ public class WebSecurityConfig implements WebMvcConfigurer  {
         registry.addViewController("/homePage").setViewName("/homePage");
         registry.addViewController("/swipe").setViewName("/swipe");
         registry.addViewController("/profil").setViewName("/profil");
+        registry.addViewController("/ml").setViewName("/ml");
+        registry.addViewController("/katzenrassen").setViewName("/katzenrassen");
     }
 
     @Bean

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="" th:href="@{/css/style_profil.css}">
 </head>
 
-<body>
+<body onload="loadImages()">
     
     <header>
 
@@ -20,6 +20,7 @@
           </div>
 
         <nav class="navigation">
+            <a th:href="@{/katzenrassen}">Finde Rasse</a>
             <a th:href="@{/swipe}">Swipe</a>
             <a href="#">Meine Kontakte</a>
             <a th:href="@{/profil}">Mein Profil</a>
@@ -40,6 +41,7 @@
             <img th:src="@{/images/Migi01.jpg}"/>
         </div>
         <div class="image-buttons">
+            <button class="deleteBtn" id="delete-selected-images-button">Ausgewählte Bilder löschen</button>
             <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
                 <input type="file" name="file" id="file" multiple>
                 <button class="upload-button" type="submit">Bild hochladen</button>
@@ -54,36 +56,113 @@
         </section>
 
 
-            <div class="image-gallery">
+            <!--<div class="image-gallery">
                 <div class="image-wrapper">
-                    <img th:src="@{/images/Migi02.jpg}"/>
+                    <img src="https://storage.googleapis.com/catinder_bucket/1e1bf3fd-9423-448f-87d0-91b0cc71000c-migi_homepage2.jpg"/>
                 </div>
-                <div class="image-wrapper">
-                    <img th:src="@{/images/storage.png}"/>
-                </div>
-                <div class="image-wrapper">
-                    <img th:src="@{/images/Migi04.png}"/>
-                </div>
-                <div class="image-wrapper">
-                    <img th:src="@{/images/Migi05.jpg}"/>
-                </div>
-                <div class="image-wrapper"><img th:src="@{/images/Migi05.jpg}"/></div>
-                <div class="image-wrapper"><img th:src="@{/images/Migi05.jpg}"/></div>
-                <div class="image-wrapper"><img th:src="@{/images/Migi05.jpg}"/></div>
-                <div class="image-wrapper"></div>
+            </div> -->
+
+     <!--   <div class="image-gallery">
+            <div th:each="url : ${imageUrls}" class="image-wrapper">
+                <img th:src="${url}" />
             </div>
+        </div> -->
+
+        <div class="image-gallery">
+            <div th:each="url : ${imageUrls}" class="image-wrapper">
+                <input type="checkbox" name="selectedImages" value="${url}">
+                <img th:src="${url}">
+            </div>
+        </div>
+
+
+
+
+
+        <!-- wegen error mit $-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+
+            function deleteSelectedImages() {
+                const selectedImages = document.querySelectorAll('input[name="selectedImages"]:checked');
+                const imageUrls = Array.from(selectedImages).map((input) => input.value);
+
+                console.log("clicked-------------------------------------------------------------");
+
+                fetch('/deleteImages', {
+                    method: 'DELETE',
+                    body: JSON.stringify(imageUrls),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+
+                    .then((response) => {
+                        console.log("responsing-------------------------------------------------------------");
+                        if (response.ok) {
+                            // Refresh the page to remove the deleted images from the gallery
+                            location.reload();
+                        } else {
+                            console.error('Failed to delete images:', response);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Failed to delete images:', error);
+                    });
+            }
+
+
+            function loadImages() {
+                $.get("/images", function(data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var img = $("<img>").attr("src", data[i]);
+                        var wrapper = $("<div>").addClass("image-wrapper").append(img);
+                        $(".image-gallery").append(wrapper);
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+                loadImages();
+            });
+
+
+
+
+
+            $(document).on('click', '#delete-selected-images-button', function() {
+                deleteSelectedImages();
+            });
+
+
+
+
+            /*
+            // hole alle Bilder aus dem Cloud-Speicher und zeige sie in der Bildergalerie an
+                const gallery = document.querySelector('.image-wrapper');
+                const storageUrl = 'https://storage.googleapis.com/catinder_bucket/';
+
+                // angenommen du hast ein Array mit den Namen der hochgeladenen Bilder
+                const uploadedImages = ['31f9bcdc-0e58-4090-86fc-25cb4e5bf335-migi_homepage1.jpg',
+                    '4570e21a-8a44-46c6-96ca-30e8ad02c928-Migi01.jpg', 'f51a6428-088c-426a-bcba-4e1c1566c8b0-Migi06.jpg'];
+
+                for (const image of uploadedImages) {
+                    const img = document.createElement('img');
+                    img.src = storageUrl + image;
+                    gallery.appendChild(img);
+                }
+
+             */
+
+        </script>
         </section>
-        
-        
-    <!-- </main> -->
-
-
 
 </body>
 </html>
 
 
-<script src="" th:src="@{js/script.js}" ></script>
+<!-- <script src="" th:src="@{js/script.js}" ></script> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

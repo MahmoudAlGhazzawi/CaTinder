@@ -34,5 +34,25 @@ public class ImageService {
         return filename;
     }
 
+    /*
+    public void deleteImage(String filename) {
+        BlobId blobId = BlobId.of(bucketName, filename);
+        storage.delete(blobId);
+    }
+
+     */
+
+    public List<String> getImageUrls() {
+        List<String> urls = new ArrayList<>();
+        Page<Blob> blobs = storage.list(bucketName);
+        for (Blob blob : blobs.iterateAll()) {
+            if (blob.getName().endsWith(".png") || blob.getName().endsWith(".jpg")
+            || blob.getName().endsWith(".jpeg")) {
+                String url = "https://storage.googleapis.com/" + bucketName + "/" + blob.getName();
+                urls.add(url);
+            }
+        }
+        return urls;
+    }
 
 }

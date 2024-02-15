@@ -1,6 +1,6 @@
 const fileInput = document.getElementById('cat');
-const modelURL = "ml/model.json";
-const metadataURL = "ml/metadata.json";
+const modelURL = "js/model.json";
+const metadataURL = "js/metadata.json";
 
 let model;
 
